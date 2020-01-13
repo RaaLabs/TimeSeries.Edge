@@ -44,4 +44,4 @@ WORKDIR /app
 COPY --from=build-env /app/Source/out ./
 COPY --from=build-env /app/Source/data ./data
 
-ENTRYPOINT ["dotnet", "Dolittle.TimeSeries.Edge.dll"]
+ENTRYPOINT ["dotnet", "RaaLabs.TimeSeries.Edge.dll"]
