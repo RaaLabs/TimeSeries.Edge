@@ -1,0 +1,12 @@
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Buffer.xml
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Buffer.csprojAssemblyReference.cache
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Buffer.csproj.CoreCompileInputs.cache
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Buffer.AssemblyInfoInputs.cache
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Buffer.AssemblyInfo.cs
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.deps.json
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.runtimeconfig.json
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.runtimeconfig.dev.json
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.dll
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/bin/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.pdb
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.dll
+/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/obj/Debug/netcoreapp2.1/Dolittle.TimeSeries.Buffer.pdb

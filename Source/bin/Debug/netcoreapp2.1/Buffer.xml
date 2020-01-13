@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dolittle.TimeSeries.Buffer</name>
+    </assembly>
+    <members>
+        <member name="T:Dolittle.TimeSeries.Buffer.Connector">
+            <summary>
+            Represents a <see cref="T:Dolittle.TimeSeries.Modules.Connectors.IAmAStreamingConnector">stream connector</see> 
+            </summary>
+        </member>
+        <member name="E:Dolittle.TimeSeries.Buffer.Connector.DataReceived">
+            <inheritdoc/>
+        </member>
+        <member name="M:Dolittle.TimeSeries.Buffer.Connector.#ctor(Dolittle.Logging.ILogger,Dolittle.TimeSeries.Buffer.ConnectorConfiguration)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dolittle.TimeSeries.Buffer.Connector"/>
+            </summary>
+            <param name="logger"><see cref="T:Dolittle.Logging.ILogger"/> for logging</param>
+            <param name="configuration"><see cref="T:Dolittle.TimeSeries.Buffer.ConnectorConfiguration"/> holding all configuration</param>
+        </member>
+        <member name="P:Dolittle.TimeSeries.Buffer.Connector.Name">
+            <inheritdoc/>
+        </member>
+        <member name="M:Dolittle.TimeSeries.Buffer.Connector.Connect">
+            <inheritdoc/>
+        </member>
+        <member name="M:Dolittle.TimeSeries.Buffer.Connector.Buffer">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dolittle.TimeSeries.Buffer.Connector.Ping">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Dolittle.TimeSeries.Buffer.ConnectorConfiguration">
+            <summary>
+            Represents the configuration for <see cref="T:Dolittle.TimeSeries.Buffer.Connector"/>
+            </summary>
+        </member>
+        <member name="M:Dolittle.TimeSeries.Buffer.ConnectorConfiguration.#ctor(System.Int32,System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of <see cref="T:Dolittle.TimeSeries.Buffer.ConnectorConfiguration"/>
+            </summary>
+            <param name="sampling">The sampling rate</param>
+            <param name="pingadress">The ping adress</param>
+            <param name="pingtimeout">The ping timeout</param>
+        </member>
+        <member name="P:Dolittle.TimeSeries.Buffer.ConnectorConfiguration.Sampling">
+            <summary>
+            Gets the sampling rate that will be used for sampling buffersize
+            </summary>
+        </member>
+        <member name="P:Dolittle.TimeSeries.Buffer.ConnectorConfiguration.PingAdress">
+            <summary>
+            Gets the ping adress
+            </summary>
+        </member>
+        <member name="P:Dolittle.TimeSeries.Buffer.ConnectorConfiguration.PingTimeout">
+            <summary>
+            Gets the timeout for ping reply
+            </summary>
+        </member>
+    </members>
+</doc>

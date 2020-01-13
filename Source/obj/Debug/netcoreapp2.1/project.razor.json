@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "/Users/sigbjorn/Documents/Raa/ShipOS/Git/Fork/Timeseries.Buffer/Source/Edge.csproj",
+  "TargetFramework": "netcoreapp2.1",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
