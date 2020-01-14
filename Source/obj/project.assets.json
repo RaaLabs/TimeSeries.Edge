@@ -997,7 +997,7 @@
           "lib/netstandard2.0/Polly.dll": {}
         }
       },
-      "RaaLabs.TimeSeries/6.4.0": {
+      "RaaLabs.TimeSeries/6.4.2": {
         "type": "package",
         "dependencies": {
           "Dolittle.Concepts": "4.7.0"
@@ -1009,11 +1009,11 @@
           "lib/netstandard2.0/RaaLabs.TimeSeries.dll": {}
         }
       },
-      "RaaLabs.TimeSeries.DataTypes/6.4.0": {
+      "RaaLabs.TimeSeries.DataTypes/6.4.2": {
         "type": "package",
         "dependencies": {
           "Dolittle.Concepts": "4.7.0",
-          "RaaLabs.TimeSeries": "6.4.0"
+          "RaaLabs.TimeSeries": "6.4.2"
         },
         "compile": {
           "lib/netstandard2.0/RaaLabs.TimeSeries.DataTypes.dll": {}
@@ -1022,7 +1022,7 @@
           "lib/netstandard2.0/RaaLabs.TimeSeries.DataTypes.dll": {}
         }
       },
-      "RaaLabs.TimeSeries.Modules/6.4.0": {
+      "RaaLabs.TimeSeries.Modules/6.4.2": {
         "type": "package",
         "dependencies": {
           "Dolittle.Assemblies": "4.7.0",
@@ -1036,7 +1036,7 @@
           "Dolittle.DependencyInversion.Booting": "4.7.0",
           "Dolittle.Serialization.Json": "4.7.0",
           "Dolittle.Types": "4.7.0",
-          "RaaLabs.TimeSeries": "6.4.0"
+          "RaaLabs.TimeSeries": "6.4.2"
         },
         "compile": {
           "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.dll": {}
@@ -1045,10 +1045,10 @@
           "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.dll": {}
         }
       },
-      "RaaLabs.TimeSeries.Modules.Connectors/6.4.0": {
+      "RaaLabs.TimeSeries.Modules.Connectors/6.4.2": {
         "type": "package",
         "dependencies": {
-          "RaaLabs.TimeSeries.Modules": "6.4.0",
+          "RaaLabs.TimeSeries.Modules": "6.4.2",
           "polly": "7.1.0"
         },
         "compile": {
@@ -1058,11 +1058,11 @@
           "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.Connectors.dll": {}
         }
       },
-      "RaaLabs.TimeSeries.Modules.IoTEdge/6.4.0": {
+      "RaaLabs.TimeSeries.Modules.IoTEdge/6.4.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Azure.Devices.Client": "1.21.3",
-          "RaaLabs.TimeSeries.Modules": "6.4.0"
+          "RaaLabs.TimeSeries.Modules": "6.4.2"
         },
         "compile": {
           "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.IoTEdge.dll": {}
@@ -4321,17 +4321,17 @@
         "polly.nuspec"
       ]
     },
-    "RaaLabs.TimeSeries/6.4.0": {
-      "sha512": "Asvvuf/PuTEbDIy6o0dRdd5QaaCOG0OlVpZHiYHC1O7bmhdfoZJiHJG7/XmkXS86RkQVBtT1qFtOTG2OZFqy6w==",
+    "RaaLabs.TimeSeries/6.4.2": {
+      "sha512": "Edy9NsbXHB4bV2TTj20XID+2X7rlVUXY1Jxeb7jMC5dCUBMBhAjC+HN7S8U9Ri76Goa1Sru3ZRf7D++U98Adrw==",
       "type": "package",
-      "path": "raalabs.timeseries/6.4.0",
+      "path": "raalabs.timeseries/6.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/RaaLabs.TimeSeries.dll",
         "lib/netstandard2.0/RaaLabs.TimeSeries.pdb",
         "lib/netstandard2.0/TimeSeries.xml",
-        "raalabs.timeseries.6.4.0.nupkg.sha512",
+        "raalabs.timeseries.6.4.2.nupkg.sha512",
         "raalabs.timeseries.nuspec",
         "src/TimeSeries/DataPoint.cs",
         "src/TimeSeries/Measurement.cs",
@@ -4344,33 +4344,33 @@
         "src/TimeSeries/Timestamp.cs"
       ]
     },
-    "RaaLabs.TimeSeries.DataTypes/6.4.0": {
-      "sha512": "FN3nIsv8pQmMoY2bpAnYlIBEKZ04/BrUUFCvmB0Cos1NpmYEKNd1UF52IB4eRhKxSOwphlKLs2+ykSEVSHOYIQ==",
+    "RaaLabs.TimeSeries.DataTypes/6.4.2": {
+      "sha512": "PaEhRBSb44tBw69iqNzuISE21nO7bm2wyK0wA+5VZefqwD8CqBv4C76wTw4m7xN7SEne1DlhdHEQHFF42QsEmg==",
       "type": "package",
-      "path": "raalabs.timeseries.datatypes/6.4.0",
+      "path": "raalabs.timeseries.datatypes/6.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/RaaLabs.TimeSeries.DataTypes.dll",
         "lib/netstandard2.0/RaaLabs.TimeSeries.DataTypes.pdb",
         "lib/netstandard2.0/TimeSeries.DataTypes.xml",
-        "raalabs.timeseries.datatypes.6.4.0.nupkg.sha512",
+        "raalabs.timeseries.datatypes.6.4.2.nupkg.sha512",
         "raalabs.timeseries.datatypes.nuspec",
         "src/TimeSeries.DataTypes/Coordinate.cs",
         "src/TimeSeries.DataTypes/TimeSeries.DataTypes.csproj"
       ]
     },
-    "RaaLabs.TimeSeries.Modules/6.4.0": {
-      "sha512": "SLnTNcn1xnHFPzzQG4wEf8lWj9Oa5IaKXvTBy/bmg5so+DcLbSZIpjwszpPNKlqn1prR61ufTpkLwv0ImxSkfw==",
+    "RaaLabs.TimeSeries.Modules/6.4.2": {
+      "sha512": "KPYvw7DIj/AGKqb1GCeJeqvD85O6yMGU1GvcOy9Z21jP2I/RBaWsXEawrsySF40H6+Rft0X5mjX+Q/KgkKixSg==",
       "type": "package",
-      "path": "raalabs.timeseries.modules/6.4.0",
+      "path": "raalabs.timeseries.modules/6.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.dll",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.pdb",
         "lib/netstandard2.0/TimeSeries.Modules.xml",
-        "raalabs.timeseries.modules.6.4.0.nupkg.sha512",
+        "raalabs.timeseries.modules.6.4.2.nupkg.sha512",
         "raalabs.timeseries.modules.nuspec",
         "src/TimeSeries.Modules/Booting/Bootloader.cs",
         "src/TimeSeries.Modules/DataReceived.cs",
@@ -4388,17 +4388,17 @@
         "src/TimeSeries.Modules/TimeSeries.Modules.csproj"
       ]
     },
-    "RaaLabs.TimeSeries.Modules.Connectors/6.4.0": {
-      "sha512": "mRroCq5J8MzwXALtwBftk++6ZfYQ1bPhiiY5j7pWIRxrasU9P+ux49emgNr/kpwjNulLeuCiWGbwGIfCR3B0FQ==",
+    "RaaLabs.TimeSeries.Modules.Connectors/6.4.2": {
+      "sha512": "7pd4AuHsJjGDMou057LkH/WwGOt/5+cmOpgbIHpX1rnL1HZlJUILIAkMlPUyaOoVeLHmGR5RzxCABjEs+HnrNA==",
       "type": "package",
-      "path": "raalabs.timeseries.modules.connectors/6.4.0",
+      "path": "raalabs.timeseries.modules.connectors/6.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.Connectors.dll",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.Connectors.pdb",
         "lib/netstandard2.0/TimeSeries.Modules.Connectors.xml",
-        "raalabs.timeseries.modules.connectors.6.4.0.nupkg.sha512",
+        "raalabs.timeseries.modules.connectors.6.4.2.nupkg.sha512",
         "raalabs.timeseries.modules.connectors.nuspec",
         "src/TimeSeries.Modules.Connectors/IAmAPullConnector.cs",
         "src/TimeSeries.Modules.Connectors/IAmAStreamingConnector.cs",
@@ -4413,17 +4413,17 @@
         "src/TimeSeries.Modules.Connectors/TimeSeries.Modules.Connectors.csproj"
       ]
     },
-    "RaaLabs.TimeSeries.Modules.IoTEdge/6.4.0": {
-      "sha512": "+56npWpM9QZBUVj6RLiUJSOV6mwvGYHF65vhd7AuHXXJyxpyBUPC+l26kk6C8t9v2ZvrP0Qy3TuW5yoFstJElg==",
+    "RaaLabs.TimeSeries.Modules.IoTEdge/6.4.2": {
+      "sha512": "D6kLM6EHbhVOpncC715ZNyA19in+/W9ztbGVWF8/vja+uiTb3uvsPY99XwGRePpdJSKZDKg9EcABoYwrbdBpKQ==",
       "type": "package",
-      "path": "raalabs.timeseries.modules.iotedge/6.4.0",
+      "path": "raalabs.timeseries.modules.iotedge/6.4.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.IoTEdge.dll",
         "lib/netstandard2.0/RaaLabs.TimeSeries.Modules.IoTEdge.pdb",
         "lib/netstandard2.0/TimeSeries.Modules.IoTEdge.xml",
-        "raalabs.timeseries.modules.iotedge.6.4.0.nupkg.sha512",
+        "raalabs.timeseries.modules.iotedge.6.4.2.nupkg.sha512",
         "raalabs.timeseries.modules.iotedge.nuspec",
         "src/TimeSeries.Modules.IoTEdge/Bindings.cs",
         "src/TimeSeries.Modules.IoTEdge/Booting/BeforePrepareBoot.cs",
