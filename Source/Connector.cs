@@ -56,12 +56,20 @@ namespace RaaLabs.TimeSeries.Edge
         {
             while (true)
             {
-                var targetFolder = "/app/data";
-                var dirsize = Directory.GetFiles(targetFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length));
-                var size = (float)dirsize / (float)1000000;
-                DataReceived("Buffersize", size, Timestamp.UtcNow);
-                Thread.Sleep(_configuration.Sampling);
+                try
+                {
+                    var targetFolder = "/app/data";
+                    var dirsize = Directory.GetFiles(targetFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length));
+                    var size = (float)dirsize / (float)1000000;
+                    DataReceived("Buffersize", size, Timestamp.UtcNow);
+                    Thread.Sleep(_configuration.Sampling);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Error while trying to get buffer");
+                }
             }
+
         }
 
         /// <inheritdoc/>
