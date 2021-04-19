@@ -15,6 +15,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                 .WithModule<EventHandling>()
                 .WithModule<Configuration>()
                 .WithModule<EdgeHub>()
+                .WithTask<Connector>()
                 .Build();
 
             application.Run().Wait();

@@ -87,7 +87,6 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                         if (reply.Status == IPStatus.Success)
                         {
                             pingReplies.Add(reply.RoundtripTime);
-
                         }
                         else
                         {
