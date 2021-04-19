@@ -1,16 +1,15 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) RaaLabs. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-using Dolittle.Configuration;
+// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace RaaLabs.TimeSeries.Edge
+using RaaLabs.Edge.Modules.Configuration;
+
+namespace RaaLabs.Edge.Connectors.HealthMonitor
 {
     /// <summary>
     /// Represents the configuration for <see cref="Connector"/>
     /// </summary>
     [Name("Connector")]
-    public class ConnectorConfiguration : IConfigurationObject
+    public class ConnectorConfiguration : IConfiguration
     {
         /// <summary>
         /// Initializes a new instance of <see cref="ConnectorConfiguration"/>
@@ -18,7 +17,6 @@ namespace RaaLabs.TimeSeries.Edge
         /// <param name="sampling">The sampling rate</param>
         /// <param name="pingadress">The ping adress</param>
         /// <param name="pingtimeout">The ping timeout</param>
-
         public ConnectorConfiguration(int sampling, string pingadress, int pingtimeout)
         {
             Sampling = sampling;
@@ -30,15 +28,15 @@ namespace RaaLabs.TimeSeries.Edge
         /// Gets the sampling rate that will be used for sampling buffersize
         /// </summary>
         public int Sampling { get; }
+
         /// <summary>
         /// Gets the ping adress
         /// </summary>
         public string PingAdress { get; }
 
-           /// <summary>
+        /// <summary>
         /// Gets the timeout for ping reply
         /// </summary>
         public int PingTimeout { get; }
-
     }
 }
