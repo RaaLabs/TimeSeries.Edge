@@ -37,13 +37,11 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
             _configuration = configuration;
         }
 
-        /// <inheritdoc/>
         public async Task Run()
         {
             Task.Run(Buffer);
             Task.Run(Ping);
         }
-        /// <inheritdoc/>
 
         Task Buffer()
         {
@@ -73,8 +71,6 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                 Thread.Sleep(_configuration.Sampling);
             }
         }
-
-        /// <inheritdoc/>
 
         Task Ping()
         {
