@@ -47,7 +47,7 @@ jobs:
     - name: Docker Build
       shell: bash
       run: |
-          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} . --build-arg CONFIGURATION="Release"
     - name: Establish context
       id: context
       uses: dolittle/establish-context-action@v2

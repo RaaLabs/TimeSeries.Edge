@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y iputils-ping
 
 USER moduleuser
 
-RUN if [ "$CONFIGURATION" = "debug" ] ; then curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg ; fi
+RUN if [ "$CONFIGURATION" = "Debug" ] ; then curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg ; fi
 
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
