@@ -8,7 +8,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     /// <summary>
     /// Represents the configuration for <see cref="Connector"/>
     /// </summary>
-    [Name("Connector")]
+    [Name("Connector.json")]
     public class ConnectorConfiguration : IConfiguration
     {
         /// <summary>

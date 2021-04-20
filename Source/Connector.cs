@@ -19,6 +19,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     /// </summary>
     public class Connector : IRunAsync, IProduceEvent<events.EdgeDatapointOutput>
     {
+        /// <inheritdoc/>
         public event EventEmitter<events.EdgeDatapointOutput> SendDatapoint;
 
         private readonly ILogger _logger;
@@ -37,6 +38,9 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Implmentation of <see cref="IRunAsync"/>.
+        /// </summary>
         public async Task Run()
         {
             Task bufferTask = Buffer();
