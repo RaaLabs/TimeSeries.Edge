@@ -1,7 +1,7 @@
-# Connectors.Edge
-[![.NET 5.0](https://github.com/RaaLabs/Connectors.Edge/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RaaLabs/Connectors.Edge/actions/workflows/dotnet.yml)
+# Connectors.HealthMonitor
+[![.NET 5.0](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml)
 
-This document describes the Connectors.Edge module for RaaLabs Edge.
+This document describes the Connectors.HealthMonitor module for RaaLabs Edge.
 
 ## What does it do?
 The module periodically checks the buffer size on Edge boxes and periodically sends a ping test.
@@ -39,9 +39,9 @@ volume binding.
 {
     "modulesContent": {
         "$edgeAgent": {
-            "properties.desired.modules.Edge": {
+            "properties.desired.modules.HealthMonitor": {
                 "settings": {
-                    "image": "<repo-name>/connectors-edge:<tag>",
+                    "image": "<repo-name>/connectors-healthmonitor:<tag>",
                     "createOptions": "{\"HostConfig\":{\"Binds\":[\"<mount-path>:/app/data\"]}}"
                 },
                 "type": "docker",
@@ -62,7 +62,7 @@ The routes in edgeHub can be specified like the example below.
 ```json
 {
     "$edgeHub": {
-        "properties.desired.routes.EdgeToIdentityMapper": "FROM /messages/modules/Edge/outputs/* INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")"
+        "properties.desired.routes.HealthMonitorToIdentityMapper": "FROM /messages/modules/HealthMonitor/outputs/* INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")"
     }
 }
 ```

@@ -17,10 +17,10 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     /// <summary>
     /// Represents a <see cref="IAmAStreamingConnector">stream connector</see> 
     /// </summary>
-    public class Connector : IRunAsync, IProduceEvent<events.EdgeDatapointOutput>
+    public class Connector : IRunAsync, IProduceEvent<events.HealthMonitorDatapointOutput>
     {
         /// <inheritdoc/>
-        public event EventEmitter<events.EdgeDatapointOutput> SendDatapoint;
+        public event EventEmitter<events.HealthMonitorDatapointOutput> SendDatapoint;
 
         private readonly ILogger _logger;
 
@@ -58,7 +58,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     var dirsize = Directory.GetFiles(targetFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length));
                     var size = (float)dirsize / (float)1000000;
 
-                    var bufferSize = new events.EdgeDatapointOutput
+                    var bufferSize = new events.HealthMonitorDatapointOutput
                     {
                         source = "Edge",
                         tag = "Buffersize",
@@ -98,7 +98,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                             _logger.Information($"Ping reply: '{reply.Status}'");
                         }
                     }
-                    var pingReply = new events.EdgeDatapointOutput
+                    var pingReply = new events.HealthMonitorDatapointOutput
                     {
                         source = "Edge",
                         tag = "Pingreply",

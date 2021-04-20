@@ -40,4 +40,4 @@ WORKDIR /app
 COPY --from=build-env /app/Source/out ./
 COPY --from=build-env /app/Source/data ./data
 
-ENTRYPOINT ["dotnet", "RaaLabs.Edge.Connectors.Edge.dll"]
+ENTRYPOINT ["dotnet", "RaaLabs.Edge.Connectors.HealthMonitor.dll"]

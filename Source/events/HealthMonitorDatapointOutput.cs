@@ -7,7 +7,7 @@ using RaaLabs.Edge.Modules.EdgeHub;
 namespace RaaLabs.Edge.Connectors.HealthMonitor.events
 {
     [OutputName("output")]
-    public class EdgeDatapointOutput : IEdgeHubOutgoingEvent
+    public class HealthMonitorDatapointOutput : IEdgeHubOutgoingEvent
     {
         /// <summary>
         /// Represents the Source system.
