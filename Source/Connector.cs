@@ -39,11 +39,12 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
 
         public async Task Run()
         {
-            Task.Run(Buffer);
-            Task.Run(Ping);
+            Task bufferTask = Buffer();
+            Task pingTask = Ping();
+            await Task.CompletedTask;
         }
 
-        Task Buffer()
+        private Task Buffer()
         {
             while (true)
             {
@@ -72,7 +73,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
             }
         }
 
-        Task Ping()
+        private Task Ping()
         {
             while (true)
             {

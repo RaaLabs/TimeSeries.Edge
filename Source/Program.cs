@@ -7,7 +7,7 @@ using RaaLabs.Edge.Modules.Configuration;
 
 namespace RaaLabs.Edge.Connectors.HealthMonitor
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
