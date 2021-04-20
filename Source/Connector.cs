@@ -21,9 +21,9 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     {
         public event EventEmitter<events.EdgeDatapointOutput> SendDatapoint;
 
-        readonly ILogger _logger;
+        private readonly ILogger _logger;
 
-        readonly ConnectorConfiguration _configuration;
+        private readonly ConnectorConfiguration _configuration;
 
 
         /// <summary>
