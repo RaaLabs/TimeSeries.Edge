@@ -45,10 +45,11 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         {
             Task bufferTask = Buffer();
             Task pingTask = Ping();
-            await Task.CompletedTask;
+            await bufferTask;
+            await pingTask;
         }
 
-        private Task Buffer()
+        private async Task Buffer()
         {
             while (true)
             {
@@ -73,11 +74,11 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     _logger.Error(ex, "Error while trying to get buffer");
                 }
 
-                Thread.Sleep(_configuration.Sampling);
+                await Task.Delay(_configuration.Sampling);
             }
         }
 
-        private Task Ping()
+        private async Task Ping()
         {
             while (true)
             {
@@ -113,7 +114,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     _logger.Error(ex, "Error while trying to ping");
                 }
 
-                Thread.Sleep(_configuration.Sampling);
+                await Task.Delay(_configuration.Sampling);
             }
         }
     }
