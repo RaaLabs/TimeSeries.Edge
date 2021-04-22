@@ -1,5 +1,6 @@
 # Connectors.HealthMonitor
 [![.NET 5.0](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_Connectors.HealthMonitor&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=RaaLabs_Connectors.HealthMonitor)
 
 This document describes the Connectors.HealthMonitor module for RaaLabs Edge.
 
