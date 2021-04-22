@@ -45,8 +45,8 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         {
             Task bufferTask = Buffer();
             Task pingTask = Ping();
-            await bufferTask;
-            await pingTask;
+
+            await Task.WhenAll(bufferTask, pingTask);
         }
 
         private async Task Buffer()
