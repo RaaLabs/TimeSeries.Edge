@@ -1,16 +1,24 @@
-﻿/*---------------------------------------------------------------------------------------------
- *  Copyright (c) RaaLabs. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-using RaaLabs.TimeSeries.Modules.Booting;
+﻿// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace RaaLabs.TimeSeries.Edge
+using RaaLabs.Edge.Modules.EventHandling;
+using RaaLabs.Edge.Modules.EdgeHub;
+using RaaLabs.Edge.Modules.Configuration;
+
+namespace RaaLabs.Edge.Connectors.HealthMonitor
 {
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
-            Bootloader.Configure(_ => {}).Start().Wait();
+            var application = new ApplicationBuilder()
+                .WithModule<EventHandling>()
+                .WithModule<Configuration>()
+                .WithModule<EdgeHub>()
+                .WithTask<Connector>()
+                .Build();
+
+            application.Run().Wait();
         }
     }
 }

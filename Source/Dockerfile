@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-runtime-stretch-slim as base
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS base
 
 ARG CONFIGURATION=Release
 
@@ -9,32 +9,28 @@ RUN if [ "$CONFIGURATION" = "Debug" ] ; then apt-get update && \
     rm -rf /var/lib/apt/lists/* \
     ; fi
 
-
 RUN useradd -ms /bin/bash moduleuser
 
 RUN apt-get update && apt-get install -y iputils-ping
 
 USER moduleuser
 
+RUN if [ "$CONFIGURATION" = "Debug" ] ; then curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg ; fi
 
-RUN if [ "$CONFIGURATION" = "debug" ] ; then curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg ; fi
 
-
-FROM microsoft/dotnet:2.1-sdk AS build-env
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build-env
 WORKDIR /app
 
 ARG CONFIGURATION
 
 VOLUME [ "/app/data" ]
 
-COPY default.props ./default.props
-COPY Source/*.csproj ./Source/
+COPY Source/ ./Source/
 
 WORKDIR /app/Source/
 
 RUN dotnet restore
 
-COPY Source/ ./
 RUN dotnet publish -c $CONFIGURATION -o out
 
 
@@ -44,4 +40,4 @@ WORKDIR /app
 COPY --from=build-env /app/Source/out ./
 COPY --from=build-env /app/Source/data ./data
 
-ENTRYPOINT ["dotnet", "RaaLabs.TimeSeries.Edge.dll"]
+ENTRYPOINT ["dotnet", "RaaLabs.Edge.Connectors.HealthMonitor.dll"]

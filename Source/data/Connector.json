@@ -1,0 +1,5 @@
+{
+    "sampling": 5000,
+    "pingAddress": "255.255.255.255",
+    "pingTimeout": 120
+}

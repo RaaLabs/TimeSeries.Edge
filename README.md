@@ -1,72 +1,68 @@
-# Edge
+# Connectors.HealthMonitor
+[![.NET 5.0](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RaaLabs/Connectors.HealthMonitor/actions/workflows/dotnet.yml)
 
-[![Build Status](https://dev.azure.com/shipos/OpenSource%20Projects/_apis/build/status/shipos-foundation.TimeSeries.Edge?branchName=master)](https://dev.azure.com/shipos/OpenSource%20Projects/_build/latest?definitionId=2&branchName=master)
+This document describes the Connectors.HealthMonitor module for RaaLabs Edge.
 
-## Cloning
+## What does it do?
+The module periodically checks the buffer size on Edge boxes and periodically sends a ping test.
 
-This repository has sub modules, clone it with:
+The connector is producing events of type [OutputName("output")] and should be routed to [IdentityMapper](https://github.com/RaaLabs/IdentityMapper).
 
-```shell
-$ git clone --recursive <repository url>
-```
+## Configuration
+The connector needs a json config file with the following format. `sampling` and `pingTimeout` are measured in milliseconds.
+````json
+{
+    "sampling": 5000,
+    "pingAddress": "255.255.255.255",
+    "pingTimeout": 120
+}
+````
 
-If you've already cloned it, you can get the submodules by doing the following:
-
-```shell
-$ git submodule update --init --recursive
-```
-
-## Building
-
-All the build things are from a submodule.
-To build, run one of the following:
-
-Windows:
-
-```shell
-$ Build\build.cmd
-```
-
-Linux / macOS
-
-```shell
-$ Build\build.sh
-```
-
-## Getting started
-
-This solution is built on top of [Azure IoT Edge](https://github.com/Azure/iotedge), and to be able to work locally and run it locally, you will need the development
-environment - read more about that [here](https://docs.microsoft.com/en-us/azure/iot-edge/development-environment).
-It mentions the use of the [iotedgedev](https://github.com/Azure/iotedgedev) tool.
-
-### VSCode
-
-If you are using VSCode or similar text editor, just open up the folder from the root. This solution uses a [sub-module](https://github.com/dolittle-tools/DotNET.Build) (as described above).
-It comes with a few things that makes development a little bit easier, a set of VSCode tasks as described [here](https://github.com/dolittle-tools/DotNET.Build#visual-studio-code-tasks).
-
-In addition to this there is a couple of Debug launch settings set up as well to enable debugging directly.
-
-### Visual Studio 201x
-
-Open up the [.sln](./Edge.sln) file at the root of the project.
-
-## Deploying
-
-### Module
-
+## IoT Edge Deployment
+### $edgeAgent
 In your `deployment.json` file, you will need to add the module. For more details on modules in IoT Edge, go [here](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition).
 
+The module has persistent state and it is assuming that this is in the `data` folder relative to where the binary is running.
+Since this is running in a containerized environment, the state is not persistent between runs. To get this state persistent, you'll
+need to configure the deployment to mount a folder on the host into the data folder.
+
+In your `deployment.json` file where you added the module, inside the `HostConfig` property, you should add the
+volume binding.
+
 ```json
-"modules": {
-    "Dolittle.TimeSeries.Edge": {
-    "version": "1.0",
-    "type": "docker",
-    "status": "running",
-    "restartPolicy": "always",
-    "settings": {
-        "image": "dolittle/timeseries-Edge",
-        "createOptions": {
-        "HostConfig": {}
+"Binds": [
+    "<mount-path>:/app/data"
+]
+```
+
+```json
+{
+    "modulesContent": {
+        "$edgeAgent": {
+            "properties.desired.modules.HealthMonitor": {
+                "settings": {
+                    "image": "<repo-name>/connectors-healthmonitor:<tag>",
+                    "createOptions": "{\"HostConfig\":{\"Binds\":[\"<mount-path>:/app/data\"]}}"
+                },
+                "type": "docker",
+                "version": "1.0",
+                "status": "running",
+                "restartPolicy": "always"
+            }
+        }
+    }
+}
+```
+
+For production setup, the bind mount can be replaced by a docker volume.
+
+### $edgeHub
+The routes in edgeHub can be specified like the example below.
+
+```json
+{
+    "$edgeHub": {
+        "properties.desired.routes.HealthMonitorToIdentityMapper": "FROM /messages/modules/HealthMonitor/outputs/* INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")"
     }
 }
 ```
