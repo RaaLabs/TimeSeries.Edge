@@ -13,9 +13,10 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         {
             var application = new ApplicationBuilder()
                 .WithModule<EventHandling>()
-                .WithModule<Configuration>()
                 .WithModule<EdgeHub>()
-                .WithTask<Connector>()
+                .WithModule<Configuration>()
+                .WithTask<PingReplyCollector>()
+                .WithTask<BufferSizeCollector>()
                 .Build();
 
             application.Run().Wait();
