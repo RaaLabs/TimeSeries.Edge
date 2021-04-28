@@ -8,20 +8,20 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     /// <summary>
     /// Represents the configuration for <see cref="Connector"/>
     /// </summary>
-    [Name("Connector.json")]
+    [Name("connector.json")]
     public class ConnectorConfiguration : IConfiguration
     {
         /// <summary>
         /// Initializes a new instance of <see cref="ConnectorConfiguration"/>
         /// </summary>
         /// <param name="sampling">The sampling rate</param>
-        /// <param name="pingadress">The ping adress</param>
-        /// <param name="pingtimeout">The ping timeout</param>
-        public ConnectorConfiguration(int sampling, string pingadress, int pingtimeout)
+        /// <param name="pingAddress">The ping adress</param>
+        /// <param name="pingTimeout">The ping timeout</param>
+        public ConnectorConfiguration(int sampling, string pingAddress, int pingTimeout)
         {
             Sampling = sampling;
-            PingAdress = pingadress;
-            PingTimeout = pingtimeout;
+            PingAddress = pingAddress;
+            PingTimeout = pingTimeout;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// <summary>
         /// Gets the ping adress
         /// </summary>
-        public string PingAdress { get; }
+        public string PingAddress { get; }
 
         /// <summary>
         /// Gets the timeout for ping reply
