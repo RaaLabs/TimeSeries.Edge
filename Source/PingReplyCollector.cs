@@ -3,27 +3,22 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading;
 using System.Threading.Tasks;
 using Serilog;
 using RaaLabs.Edge.Modules.EventHandling;
 
-
 namespace RaaLabs.Edge.Connectors.HealthMonitor
 {
     /// <summary>
-    /// Represents a <see cref="IAmAStreamingConnector">stream connector</see> 
+    /// Represents a ping collector
     /// </summary>
-    public class Connector : IRunAsync, IProduceEvent<events.HealthMonitorDatapointOutput>
+    public class PingReplyCollector : IRunAsync, IProduceEvent<Events.HealthMonitorDatapointOutput>
     {
         /// <inheritdoc/>
-        public event EventEmitter<events.HealthMonitorDatapointOutput> SendDatapoint;
-
+        public event EventEmitter<Events.HealthMonitorDatapointOutput> SendDatapoint;
         private readonly ILogger _logger;
-
         private readonly ConnectorConfiguration _configuration;
 
 
@@ -32,7 +27,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// </summary>
         /// <param name="logger"><see cref="ILogger"/> for logging</param>
         /// <param name="configuration"><see cref="ConnectorConfiguration"/> holding all configuration</param>
-        public Connector(ILogger logger, ConnectorConfiguration configuration)
+        public PingReplyCollector(ILogger logger, ConnectorConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
@@ -43,43 +38,6 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// </summary>
         public async Task Run()
         {
-            Task bufferTask = Buffer();
-            Task pingTask = Ping();
-
-            await Task.WhenAll(bufferTask, pingTask);
-        }
-
-        private async Task Buffer()
-        {
-            while (true)
-            {
-                try
-                {
-                    var targetFolder = "/app/data";
-                    var dirsize = Directory.GetFiles(targetFolder, "*", SearchOption.AllDirectories).Sum(t => (new FileInfo(t).Length));
-                    var size = (float)dirsize / (float)1000000;
-
-                    var bufferSize = new events.HealthMonitorDatapointOutput
-                    {
-                        source = "Edge",
-                        tag = "Buffersize",
-                        value = size,
-                        timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
-                    };
-
-                    SendDatapoint(bufferSize);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex, "Error while trying to get buffer");
-                }
-
-                await Task.Delay(_configuration.Sampling);
-            }
-        }
-
-        private async Task Ping()
-        {
             while (true)
             {
                 try
@@ -89,7 +47,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
 
                     for (int i = 0; i < 4; i++)
                     {
-                        PingReply reply = pingSender.Send(_configuration.PingAdress, _configuration.PingTimeout);
+                        PingReply reply = pingSender.Send(_configuration.PingAddress, _configuration.PingTimeout);
                         if (reply.Status == IPStatus.Success)
                         {
                             pingReplies.Add(reply.RoundtripTime);
@@ -99,7 +57,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                             _logger.Information($"Ping reply: '{reply.Status}'");
                         }
                     }
-                    var pingReply = new events.HealthMonitorDatapointOutput
+                    var pingReply = new Events.HealthMonitorDatapointOutput
                     {
                         source = "Edge",
                         tag = "Pingreply",
