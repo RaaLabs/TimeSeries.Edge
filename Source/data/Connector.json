@@ -1,5 +1,10 @@
 {
     "sampling": 5000,
     "pingAddress": "8.8.8.8",
-    "pingTimeout": 120
+    "pingTimeout": 120,
+    "dataTrafficScraper": {
+        "ip": "127.0.0.1",
+        "port": "8888",
+        "scraping_interval": 10000
+    }
 }

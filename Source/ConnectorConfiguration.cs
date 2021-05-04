@@ -1,6 +1,6 @@
 // Copyright (c) RaaLabs. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
+using System.Collections.Generic;
 using RaaLabs.Edge.Modules.Configuration;
 
 namespace RaaLabs.Edge.Connectors.HealthMonitor
@@ -17,11 +17,13 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// <param name="sampling">The sampling rate</param>
         /// <param name="pingAddress">The ping adress</param>
         /// <param name="pingTimeout">The ping timeout</param>
-        public ConnectorConfiguration(int sampling, string pingAddress, int pingTimeout)
+        /// <param name="dataTrafficScraper">The data metrics specifications</param>
+        public ConnectorConfiguration(int sampling, string pingAddress, int pingTimeout, Dictionary<string,string> dataTrafficScraper)
         {
             Sampling = sampling;
             PingAddress = pingAddress;
             PingTimeout = pingTimeout;
+            DataTrafficScraper = dataTrafficScraper;
         }
 
         /// <summary>
@@ -38,5 +40,11 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// Gets the timeout for ping reply
         /// </summary>
         public int PingTimeout { get; }
+
+        /// <summary>
+        /// Gets the ip, port and scraping interval for the metrics collector
+        /// </summary>
+        public Dictionary<string,string> DataTrafficScraper { get; }
+
     }
 }
