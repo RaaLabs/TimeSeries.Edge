@@ -18,7 +18,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         /// <param name="pingAddress">The ping adress</param>
         /// <param name="pingTimeout">The ping timeout</param>
         /// <param name="dataTrafficScraper">The data metrics specifications</param>
-        public ConnectorConfiguration(int sampling, string pingAddress, int pingTimeout, Dictionary<string,string> dataTrafficScraper)
+        public ConnectorConfiguration(int sampling, string pingAddress, int pingTimeout, DataTrafficScraperConfiguration dataTrafficScraper)
         {
             Sampling = sampling;
             PingAddress = pingAddress;
@@ -42,9 +42,24 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         public int PingTimeout { get; }
 
         /// <summary>
-        /// Gets the ip, port and scraping interval for the metrics collector
+        /// Holds data traffic scraper configuration
         /// </summary>
-        public Dictionary<string,string> DataTrafficScraper { get; }
+        public DataTrafficScraperConfiguration DataTrafficScraper { get; }
 
+    }
+    public class DataTrafficScraperConfiguration
+    {
+        /// <summary>
+        /// Gets the ip for the data traffic metrics collector
+        /// </summary> 
+        public string Ip { get; set; }
+        /// <summary>
+        /// Gets the port for the data traffic metrics collector
+        /// </summary> 
+        public string Port { get; set; }
+        /// <summary>
+        /// Gets the scraping interval for the data traffic metrics collector
+        /// </summary> 
+        public int ScrapingInterval { get; set; }
     }
 }

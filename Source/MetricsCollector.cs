@@ -45,7 +45,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                 {
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("http://"+ _configuration.DataTrafficScraper["ip"] + ":" + _configuration.DataTrafficScraper["port"] +"/metrics");
+                        client.BaseAddress = new Uri("http://"+ _configuration.DataTrafficScraper.Ip + ":" + _configuration.DataTrafficScraper.Port +"/metrics");
                         var responseTask = client.GetStringAsync("");
                         var responseResult = responseTask.Result;
 
@@ -77,7 +77,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     _logger.Error(ex, "Error while trying to collect metrics");
                 }
 
-                await Task.Delay(Int16.Parse(_configuration.DataTrafficScraper["scraping_interval"]));
+                await Task.Delay(_configuration.DataTrafficScraper.ScrapingInterval);
             }
 
         }
