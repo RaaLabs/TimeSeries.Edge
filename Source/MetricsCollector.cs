@@ -52,15 +52,15 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                         parsedData = PrometheusParser.Parse<TotalDataUsage>(responseResult);
                     }
                     var timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-                    var metricsDictionary = new Dictionary<string, double>();
+                    var metrics = new Dictionary<string, double>();
 
                     foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(parsedData))
                     {
                         object value = property.GetValue(parsedData);
-                        metricsDictionary.Add(property.Name, (double)value);
+                        metrics.Add(property.Name, (double)value);
                     }
 
-                    foreach (var metric in metricsDictionary)
+                    foreach (var metric in metrics)
                     {
                         var datapoint = new Events.HealthMonitorDatapointOutput
                         {
@@ -84,7 +84,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     }
     class TotalDataUsage
     {
-        public double TotalIncomming { get; set; }
+        public double TotalIncoming { get; set; }
         public double TotalOutgoing  { get; set; }
 
     }

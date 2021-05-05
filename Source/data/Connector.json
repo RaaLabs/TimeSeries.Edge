@@ -3,7 +3,7 @@
     "pingAddress": "8.8.8.8",
     "pingTimeout": 120,
     "dataTrafficScraper": {
-        "ip": "127.0.0.1",
+        "ip": "host.docker.internal",
         "port": "8888",
         "scraping_interval": 10000
     }
