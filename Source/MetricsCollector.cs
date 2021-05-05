@@ -24,7 +24,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
 
 
         /// <summary>
-        /// Initializes a new instance of <see cref="Connector"/>
+        /// Initializes a new instance of <see cref="MetricsCollector"/>
         /// </summary>
         /// <param name="logger"><see cref="ILogger"/> for logging</param>
         /// <param name="configuration"><see cref="ConnectorConfiguration"/> holding all configuration</param>
@@ -45,7 +45,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                 {
                     using (var client = new HttpClient())
                     {
-                        client.BaseAddress = new Uri("http://"+ _configuration.DataTrafficScraper.Ip + ":" + _configuration.DataTrafficScraper.Port +"/metrics");
+                        client.BaseAddress = new Uri("http://" + _configuration.DataTrafficScraper.Ip + ":" + _configuration.DataTrafficScraper.Port + "/metrics");
                         var responseTask = client.GetStringAsync("");
                         var responseResult = responseTask.Result;
 
@@ -79,13 +79,23 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
 
                 await Task.Delay(_configuration.DataTrafficScraper.ScrapingInterval);
             }
-
         }
     }
+
+    /// <summary>
+    /// Metrics to be scraped
+    /// </summary>
     class TotalDataUsage
     {
+        /// <summary>
+        /// Total incoming bytes from internet
+        /// </summary>
         public double TotalIncoming { get; set; }
-        public double TotalOutgoing  { get; set; }
+
+        /// <summary>
+        /// Total outgoing bytes from internet
+        /// </summary>
+        public double TotalOutgoing { get; set; }
 
     }
 }
