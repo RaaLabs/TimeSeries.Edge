@@ -20,6 +20,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
         public event EventEmitter<Events.HealthMonitorDatapointOutput> SendDatapoint;
         private readonly ILogger _logger;
         private readonly ConnectorConfiguration _configuration;
+        private TotalDataUsage parsedData;
 
 
         /// <summary>
@@ -42,7 +43,6 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
             {
                 try
                 {
-                    var parsedData = new TotalDataUsage();
                     using (var client = new HttpClient())
                     {
                         client.BaseAddress = new Uri("http://"+ _configuration.DataTrafficScraper["ip"] + ":" + _configuration.DataTrafficScraper["port"] +"/metrics");
