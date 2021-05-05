@@ -7,19 +7,24 @@ This document describes the Connectors.HealthMonitor module for RaaLabs Edge.
 
 ## What does it do?
 
-The module periodically checks the buffer size on Edge boxes and periodically sends a ping test.
+The module periodically checks the buffer size on Edge boxes, sends a ping test and scrapes the total incoming and outgoing data usage bytes provided by [trafficmonitor](https://github.com/RaaLabs/trafficmonitor).
 
 The connector is producing events of type [OutputName("output")] and should be routed to [IdentityMapper](https://github.com/RaaLabs/IdentityMapper).
 
 ## Configuration
 
-The connector needs a json config file with the following format. `sampling` and `pingTimeout` are measured in milliseconds.
+The connector needs a json config file with the following format. `sampling`, `pingTimeout`, and `scrapingInterval` are in milliseconds.
 
 ````json
 {
     "sampling": 5000,
     "pingAddress": "8.8.8.8",
-    "pingTimeout": 120
+    "pingTimeout": 120,
+    "dataTrafficScraper": {
+        "ip": "host.docker.internal",
+        "port": "8888",
+        "scrapingInterval": 10000
+    }
 }
 ````
 
