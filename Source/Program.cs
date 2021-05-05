@@ -17,6 +17,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                 .WithModule<Configuration>()
                 .WithTask<PingReplyCollector>()
                 .WithTask<BufferSizeCollector>()
+                .WithTask<MetricsCollector>()
                 .Build();
 
             application.Run().Wait();
