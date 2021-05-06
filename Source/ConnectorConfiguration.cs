@@ -1,6 +1,6 @@
 // Copyright (c) RaaLabs. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System.Collections.Generic;
+
 using RaaLabs.Edge.Modules.Configuration;
 
 namespace RaaLabs.Edge.Connectors.HealthMonitor
@@ -9,6 +9,7 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
     /// Represents the configuration for <see cref="Connector"/>
     /// </summary>
     [Name("connector.json")]
+    [RestartOnChange]
     public class ConnectorConfiguration : IConfiguration
     {
         /// <summary>
