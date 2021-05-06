@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0-alpine3.13 AS build-env
 WORKDIR /app
 
-VOLUME [ "/app/data" ]
+VOLUME [ "/app/config" ]
 
 COPY Source/ ./Source/
 
@@ -16,7 +16,7 @@ RUN apk add --no-cache iputils
 
 WORKDIR /app
 COPY --from=build-env /app/Source/out ./
-COPY --from=build-env /app/Source/data ./data
+COPY --from=build-env /app/Source/config ./config
 
 RUN adduser -Ds /bin/sh moduleuser
 USER moduleuser
