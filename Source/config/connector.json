@@ -1,9 +1,9 @@
 {
-    "sampling": 5000,
+    "sampling": 10000,
     "pingAddress": "8.8.8.8",
-    "pingTimeout": 120,
+    "pingTimeout": 5000,
     "dataTrafficScraper": {
-        "ip": "host.docker.internal",
+        "ip": "127.0.0.1",
         "port": "8888",
         "scrapingInterval": 10000
     }
