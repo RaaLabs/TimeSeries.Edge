@@ -59,10 +59,10 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     }
                     var pingReply = new Events.HealthMonitorDatapointOutput
                     {
-                        source = "Edge",
-                        tag = "Pingreply",
-                        value = pingReplies.Average(),
-                        timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                        Source = "Edge",
+                        Tag = "Pingreply",
+                        Value = pingReplies.Average(),
+                        Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                     };
 
                     SendDatapoint(pingReply);

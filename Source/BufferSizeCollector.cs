@@ -47,10 +47,10 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
 
                     var bufferSize = new Events.HealthMonitorDatapointOutput
                     {
-                        source = "Edge",
-                        tag = "Buffersize",
-                        value = size,
-                        timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
+                        Source = "Edge",
+                        Tag = "Buffersize",
+                        Value = size,
+                        Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(),
                     };
 
                     SendDatapoint(bufferSize);
