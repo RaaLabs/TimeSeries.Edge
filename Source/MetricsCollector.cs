@@ -64,10 +64,10 @@ namespace RaaLabs.Edge.Connectors.HealthMonitor
                     {
                         var datapoint = new Events.HealthMonitorDatapointOutput
                         {
-                            source = "Edge",
-                            tag = metric.Key,
-                            value = metric.Value,
-                            timestamp = timestamp,
+                            Source = "Edge",
+                            Tag = metric.Key,
+                            Value = metric.Value,
+                            Timestamp = timestamp,
                         };
                         SendDatapoint(datapoint);
                     }
