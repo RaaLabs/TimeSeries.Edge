@@ -1,0 +1,22 @@
+trigger:
+  - main
+pr:
+  - main
+
+variables:
+  vmImageName: 'ubuntu-18.04'
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+    - job: Build
+      displayName: Build
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+        - task: AzureIoTEdge@2
+          displayName: 'Azure IoT Edge - Generate deployment manifest'
+          inputs:
+            action: 'Generate deployment manifest'
+            validateGeneratedDeploymentManifest: "true"

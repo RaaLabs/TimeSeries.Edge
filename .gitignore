@@ -281,3 +281,4 @@ Coverage
 
 *.feature.cs
 deployment.amd64.json
+.DS_Store
