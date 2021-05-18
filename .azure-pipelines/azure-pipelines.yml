@@ -5,18 +5,28 @@ pr:
 
 variables:
   vmImageName: 'ubuntu-18.04'
+  azureServiceConnection: 'rl-edge-customers-lab'
+  iotHub: 'raalab'
 
 stages:
-  - stage: Build
+- stage: Build
+  displayName: Build
+  jobs:
+  - job: Build
     displayName: Build
-    jobs:
-    - job: Build
-      displayName: Build
-      pool:
-        vmImage: $(vmImageName)
-      steps:
-        - task: AzureIoTEdge@2
-          displayName: 'Azure IoT Edge - Generate deployment manifest'
-          inputs:
-            action: 'Generate deployment manifest'
-            validateGeneratedDeploymentManifest: "true"
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: AzureIoTEdge@2
+      displayName: 'Azure IoT Edge - Generate deployment manifest'
+      inputs:
+        action: 'Generate deployment manifest'
+        validateGeneratedDeploymentManifest: 'true'
+    - task: AzureIoTEdge@2
+      displayName: 'Azure IoT Edge - Deploy to IoT Edge devices'
+      inputs:
+        action: 'Deploy to IoT Edge devices'
+        azureSubscription: $(azureServiceConnection)
+        iothubname: $(iotHub)
+        deviceOption: 'Multiple Devices'
+        targetcondition: 'tags.base=''debug'''
