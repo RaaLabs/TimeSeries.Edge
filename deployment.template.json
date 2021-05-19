@@ -64,8 +64,14 @@
             "restartPolicy": "always",
             "startupOrder": 2,
             "settings": {
-              "image": "raaedge.azurecr.io/connectors-healthmonitor:2.1.2",
-              "createOptions": {}
+              "image": "raaedge.azurecr.io/connectors-healthmonitor:2.1.3",
+              "createOptions": {
+                "HostConfig": {
+                  "Binds": [
+                    "/etc/dolittle.timeseries/healthmonitor:/app/data"
+                  ]
+                }
+              }
             }
           }
         }
@@ -82,5 +88,6 @@
         }
       }
     }
-  }
+  },
+  "priority": 30
 }
