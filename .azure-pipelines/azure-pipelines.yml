@@ -8,6 +8,9 @@ variables:
   vmImageName: 'ubuntu-18.04'
   azureServiceConnection: 'rl-edge-customers-lab'
   iotHub: 'raalab'
+  ACR_USER: $(acr.user)
+  ACR_PASSWORD: $(acr.password)
+  ACR_ADDRESS: $(acr.address)
 
 stages:
 - stage: Build
