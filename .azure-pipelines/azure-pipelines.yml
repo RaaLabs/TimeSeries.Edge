@@ -26,7 +26,6 @@ stages:
       inputs:
         action: 'Generate deployment manifest'
         templateFilePath: 'deployment.template.json'
-        validateGeneratedDeploymentManifest: 'true'
         fillRegistryCredential: 'true'
     - task: AzureIoTEdge@2
       displayName: 'Azure IoT Edge - Deploy to IoT Edge devices'
