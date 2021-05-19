@@ -58,7 +58,7 @@
             "restartPolicy": "always",
             "startupOrder": 2,
             "settings": {
-              "image": "raalabs/connectors-healthmonitor",
+              "image": "raaedge.azurecr.io/connectors-healthmonitor:2.1.2",
               "createOptions": {}
             }
           }
