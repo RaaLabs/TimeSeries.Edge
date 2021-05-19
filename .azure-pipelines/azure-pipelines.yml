@@ -8,9 +8,6 @@ variables:
   vmImageName: 'ubuntu-18.04'
   azureServiceConnection: 'rl-edge-customers-lab'
   iotHub: 'raalab'
-  ACR_PASSWORD: $(ACR_PASSWORD)
-  ACR_USER: $(ACR_USER)
-  ACR_ADDRESS: $(ACR_ADDRESS)
 
 stages:
 - stage: Build
@@ -25,7 +22,9 @@ stages:
       displayName: 'Azure IoT Edge - Generate deployment manifest'
       inputs:
         action: 'Generate deployment manifest'
+        templateFilePath: 'deployment.template.json'
         validateGeneratedDeploymentManifest: 'true'
+        fillRegistryCredential: 'true'
     - task: AzureIoTEdge@2
       displayName: 'Azure IoT Edge - Deploy to IoT Edge devices'
       inputs:
